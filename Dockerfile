@@ -30,10 +30,12 @@ WORKDIR /app
 
 COPY frontend/package*.json ./
 
-RUN npm install
+RUN npm install --legacy-peer-deps --loglevel=error
 
 COPY frontend/ .
 
-EXPOSE 3000
+ENV PORT=8080
+
+EXPOSE 8080
 
 CMD ["npm", "start"]
